@@ -1,4 +1,4 @@
-<img src="img/1200px-Java_logo.svg.png" alt="Java — Википедия" style="zoom: 25%;" />
+<img src="img/1200px-Java_logo.svg.png" alt="Java — Википедия" width=300 />
 
 
 
@@ -62,7 +62,7 @@
 
 [Начало главы](#1.-Введение-в-Java)
 
-<img src="img/duke-small-1.png" alt="Что нового в Java 12 - The blog of a gypsy engineer" style="zoom:10%;" />
+<img src="img/duke-small-1.png" alt="Что нового в Java 12 - The blog of a gypsy engineer" width=300 />
 
 Парень Дюк смешной отвязный, а язык то нет. 
 
