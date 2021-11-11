@@ -311,6 +311,103 @@ int[][] triangle = {
 
 
 
+#### Аргументы переменной длины
+
+Синтаксис выглядит для переменных типа `String` следующим образом:
+
+```java
+public void getData(String ... data){
+
+   //your code here...
+
+}
+```
+
+В языке Java эта возможность появилась начиная с JDK5.
+
+Для чего же такой функционал может понадобиться? Вариантов множество. Самый простой - Вам нужно реализовать метод **sum()**, который будет суммировать два числа. Правда, что тут сложного:
+
+```java
+public class Summator {
+
+   public static void main(String[] s){
+      int x = 5;
+      int y = 5;
+      int res = sum(x, y);
+      System.out.println(res);
+
+   }
+
+   public static int sum(int a, int b){
+      return a+b;
+   }
+
+}
+```
+
+На следующий день к Вам забегает заказчик и говорит что задача изменилась, и в метод **sum()** нужно передавать три параметра… нет, возможно, 4… или 10… Ну можно перегрузить метод для 3, 4 или 10 аргументов:
+
+```java
+public class Summator {
+
+   public static void main(String[] s){
+      int x = 5;
+      int y = 5;
+      int res = sum(x, y);
+      System.out.println(res);
+
+   }
+
+   public static int sum(int a, int b){
+      return a+b;
+   }
+     
+   public static int sum(int a, int b, int c){
+      return a+b+c;
+   }
+    
+   public static int sum(int a, int b, int c, int d){
+      return a+b+c+d;
+   }
+    
+   // и так дальше до 10
+
+}
+```
+
+И компилятор это стерпит. И это даже будет работать. Но пожалейте же себя!
+
+Если количество аргументов заведомо неизвестно, есть специальная запись - **(int ... nums)**:
+
+```java
+public class Summator {
+
+   public static void main(String[] s){
+      int x = 5;
+      int y = 5;
+       //мы можем передать сколько угодно параметров
+      int res = sum(x, y, 1, 3, 4, 5, 6, 7, 8);
+      //или даже передать массив
+      int[] ar = new int[]{1, 2, 5, 7, 11};
+      int res2 = sumData(ar);  
+      System.out.println(res);
+      System.out.println(res2);
+
+   }
+
+   public static int sum(int ... nums){
+       int res=0;
+       for(int i: nums){
+           res+=i;
+       }
+       return res;
+   }
+
+}
+```
+
+
+
 ## 2.4 Управляющие конструкции: условные операторы и циклы
 
 [Начало главы](#2-Базовый-синтаксис-Java)
