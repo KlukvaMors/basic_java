@@ -191,6 +191,29 @@ double d = pi * c;
 | ---------- | ---- | --------------- |
 | boolean    | 8    | `true`, `false` |
 
+```java
+// прямое присваивание
+boolean brushedTeethToday = true;
+boolean haveDog = false;
+// как результат условия
+boolean iKnowMath = 1 < 100;
+// Main.java:3: error: incompatible types: int cannot be converted to boolean
+boolean fromInt = 10;
+```
+
+К типу `boolean` можно применять логические операции
+
+```java
+//логическое отрицание
+boolean haveSpareTime = !isBusy;
+//логическое "И"
+boolean canGoToPark = haveSpareTime && weatherIsGood;
+//логическое "ИЛИ"
+boolean hadGoodTime = learnedJavaOnStepic || wentToPark;
+//логическое исключающее "ИЛИ"
+boolean tastesGood = addedKetchup ^ addedHoney;
+```
+
 
 
 ### 2.1.4 Символьный тип
