@@ -38,6 +38,16 @@
       - [2.4.1 Строки VS массив символов](#241-Строки-VS-массив-символов)
       - [2.4.2 Где хранятся строки?](#242-Где-хранятся-строки)
       - [2.4.3 String vs StringBuffer vs StringBuilder](#243-String-vs-StringBuffer-vs-StringBuilder)
+    - [2.5 Управляющие конструкции](#25-Управляющие-конструкции)
+      - [2.5.1 Оператор if](#251-Оператор-if)
+      - [2.5.2 Оператор switch](#252-Оператор-switch)
+      - [2.5.3 Цикл while](#253-Цикл-while)
+      - [2.5.4 Цикл do while](#254-Цикл-do-while)
+      - [2.5.5 Цикл for](#255-Цикл-for)
+      - [2.5.6 Цикл foreach](#256-Цикл-foreach)
+      - [2.5.7 Оператор break](#257-Оператор-break)
+      - [2.5.8 Оператор continue](#258-Оператор-continue)
+      - [2.5.9 Метки](#259-Метки)
 - [3. Объекты, классы и пакеты в Java](#3-Объекты-классы-и-пакеты-в-Java)
     - [3.1 Основы ООП](#31-Основы-ООП)
     - [3.2 Пакеты и модификаторы доступа](#32-Пакеты-и-модификаторы-доступа)
@@ -601,6 +611,143 @@ String str2 = new String("value");
 - Immutability : String
 - Thread Safety : String(immutable), StringBuffer
 - Performance : StringBuilder (especially when a number of modifications are made.)
+
+
+
+## 2.5 Управляющие конструкции
+
+[Начало главы](#2-Базовый-синтаксис-Java)
+
+### 2.5.1 Оператор if
+
+
+
+```java
+if (weatherIsGood) {
+	walkInThePark();
+} else {
+	learnJavaOnStepic();
+}
+```
+
+
+
+### 2.5.2 Оператор switch
+
+
+
+```java
+switch (digit) {
+    case 0:
+    	text = "zero";
+    break;
+    case 1:
+    	text = "one";
+    break;
+    // ...
+    default:
+    	text = "???";
+}
+```
+
+
+
+### 2.5.3 Цикл while
+
+
+
+```java
+while (haveTime() && haveMoney()) {
+	goShopping();
+}
+```
+
+
+
+### 2.5.4 Цикл do while
+
+
+
+```java
+do {
+	goShopping();
+} while (haveTime() && haveMoney());
+```
+
+
+
+### 2.5.5 Цикл for
+
+
+
+```java
+for (int i = 0; i < args.length; i++) {
+	System.out.println(args[i]);
+}
+```
+
+
+
+### 2.5.6 Цикл foreach
+
+
+
+```java
+for (String arg : args) {
+	System.out.println(arg);
+}
+```
+
+
+
+### 2.5.7 Оператор break
+
+
+
+```java
+boolean found = false;
+for (String element : haystack) {
+    if (needle.equals(element )) {
+        found = true;
+        break;
+    }
+}
+```
+
+
+
+### 2.5.8 Оператор continue
+
+
+
+```java
+int count = 0;
+for (String element : haystack) {
+    if (!needle.equals(element)) {
+    	continue;
+    }
+    count++;
+}
+```
+
+
+
+### 2.5.9 Метки
+
+
+
+```java
+boolean found = false;
+outer:
+for (int[] row : matrix) {
+    for (int x : row) {
+        if (x > 100) {
+            found = true;
+            break outer;
+        }
+    }
+}
+```
 
 
 
