@@ -15,6 +15,9 @@
 - [1. Введение в Java](#1-Введение-в-Java)
     - [1.1 Что такое Java, откуда она взялась и зачем нужна](#11-Что-такое-Java-откуда-она-взялась-и-зачем-нужна)
     - [1.2 Первый контакт — Hello World](#12-Первый-контакт--Hello-World)
+    - [1.3 Популярность Java](#13-Популярность-Java)
+      - [1.3.1 Платформонезависимость](#131-Платформонезависимость)
+    - [1.4 JDK vs JVM VS JRE](#14-JDK-vs-JVM-VS-JRE)
     - [1.3 Знакомство со средой разработки](#13-Знакомство-со-средой-разработки)
 - [2. Базовый синтаксис Java](#2-Базовый-синтаксис-Java)
     - [2.1 Примитивные типы](#21-Примитивные-типы)
@@ -117,6 +120,36 @@ print("Hello World")
 ```
 
 
+
+## 1.3 Популярность Java
+
+- Платформонезависимость и портируемость
+- ООП язык 
+- Безопасность 
+- Богатое API
+- Вездеприсущий
+  - Web Applications (Java EE (JSP, Servlets), Spring, Struts..)
+  - Mobile Apps(Android)
+  - Microservices (Spring Boot)
+
+
+
+#### 1.3.1 Платформонезависимость
+
+Скомпилировано один раз (в байт код), работает везде.
+
+![java-write-once-run-anywhere.png](img/java-write-once-run-anywhere.png)
+
+## 1.4 JDK vs JVM VS JRE
+
+- JVM (Java Virtual Machine)
+  - запускает Java bytecode.
+- JRE
+  - **JVM** + Libraries + Other Components (to run applets and other java applications)
+- JDK
+  - **JRE** + Compilers + Debuggers
+
+![](img/JVM-JRE-JDK.drawio.png)
 
 ## 1.3 Знакомство со средой разработки
 
