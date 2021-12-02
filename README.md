@@ -37,6 +37,7 @@
     - [2.4 Строки String](#24-Строки-String)
       - [2.4.1 Строки VS массив символов](#241-Строки-VS-массив-символов)
       - [2.4.2 Где хранятся строки?](#242-Где-хранятся-строки)
+      - [2.4.3 String vs StringBuffer vs StringBuilder](#243-String-vs-StringBuffer-vs-StringBuilder)
 - [3. Объекты, классы и пакеты в Java](#3-Объекты-классы-и-пакеты-в-Java)
     - [3.1 Основы ООП](#31-Основы-ООП)
     - [3.2 Пакеты и модификаторы доступа](#32-Пакеты-и-модификаторы-доступа)
@@ -592,6 +593,14 @@ String str1 = "value";
 //2. String Object - created on the heap
 String str2 = new String("value");
 ```
+
+
+
+### 2.4.3 String vs StringBuffer vs StringBuilder
+
+- Immutability : String
+- Thread Safety : String(immutable), StringBuffer
+- Performance : StringBuilder (especially when a number of modifications are made.)
 
 
 
