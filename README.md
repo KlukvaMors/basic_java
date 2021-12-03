@@ -93,6 +93,10 @@
 - [6. Generics. Collections. Streams](#6-Generics-Collections-Streams)
     - [6.1 Generics](#61-Generics)
     - [6.2 Коллекции](#62-Коллекции)
+      - [6.2.1 Интерфейс Collection](#621-Интерфейс-Collection)
+      - [6.2.2 Интерфейс List](#622-Интерфейс-List)
+      - [6.2.3 Интерфейс Queue](#623-Интерфейс-Queue)
+      - [6.2.4 Интерфейс Deque](#624-Интерфейс-Deque)
     - [6.3 Функциональные интерфейсы](#63-Функциональные-интерфейсы)
     - [6.4 Stream API](#64-Stream-API)
 
@@ -945,6 +949,12 @@ try {
 
 
 
+http://java-online.ru/java-inputstream.xhtml
+
+https://javarush.ru/quests/lectures/questcore.level08.lecture04
+
+
+
 ## 5.3 Потоки символов
 
 [Начало главы](#5-Ввод-вывод-доступ-к-файловой-системе)
@@ -972,6 +982,116 @@ try {
 ## 6.2 Коллекции
 
 [Начало главы](#6-Generics-Collections-Streams)
+
+
+
+![Java collection](img/68747470733a2f2f6d656469612e6765656b73666f726765656b732e6f72672f77702d636f6e74656e742f75706c6f6164732f6a6176612d636f6c6c656374696f6e2e6a7067.jpeg)
+
+### 6.2.1 Интерфейс Collection
+
+ Базовый интерфейс для всех коллекций и других интерфейсов коллекций
+
+```java
+interface Collection<E> extends Iterable<E>
+{
+  boolean add(E paramE);
+  boolean remove(Object paramObject);
+
+  int size();
+  boolean isEmpty();
+  void clear();
+
+  boolean contains(Object paramObject);
+  boolean containsAll(Collection<?> paramCollection);
+  
+  boolean addAll(Collection<? extends E> paramCollection);
+  boolean removeAll(Collection<?> paramCollection);
+  boolean retainAll(Collection<?> paramCollection);
+  
+
+  Iterator<E> iterator();
+
+  //A NUMBER OF OTHER METHODS AS WELL..
+}
+```
+
+
+
+### 6.2.2 Интерфейс List
+
+Наследует интерфейс Collection и представляет функциональность простых списков
+
+```java
+interface List<E> extends Collection<E>
+{
+  boolean addAll(int paramInt, Collection<? extends E> paramCollection);
+
+  E get(int paramInt);
+  E set(int paramInt, E paramE);
+
+  void add(int paramInt, E paramE);
+  E remove(int paramInt);
+
+  int indexOf(Object paramObject);
+  int lastIndexOf(Object paramObject);
+
+  ListIterator<E> listIterator();
+  ListIterator<E> listIterator(int paramInt);
+  List<E> subList(int paramInt1, int paramInt2);
+}
+```
+
+
+
+### 6.2.3 Интерфейс Queue
+
+Интерфейс *`Queue`* расширяет *`Collection`* и объявляет поведение очередей, которые представляют собой список с дисциплиной "первый вошел, первый вышел" (***FIFO***). Существуют разные типы очередей, в которых порядок основан на некотором критерии. Очереди не могут хранить 
+
+- **Е element()** - возвращает элемент из головы очереди. <u>Элемент не удаляется</u>. Если очередь пуста, инициируется исключение *`NoSuchElementException`*.
+- **Е remove()** - удаляет элемент из головы очереди, возвращая его. Инициирует исключение *`NoSuchElementException`*, если очередь пуста
+- **Е peek()** \- возвращает элемент из головы очереди. Возвращает *`null`*, если очередь пуста. <u>Элемент не удаляется.</u>
+- **Е роll()** \- возвращает элемент из головы очереди и <u>удаляет</u> его. Возвращает *`null`*, если очередь пуста.
+- **boolean offer(Е оbj)** - пытается добавить *оbj* в очередь. Возвращает *`true`*, если *оbj* добавлен, и *`false`* в противном случае.
+
+
+
+```java
+Queue<String> queue = new LinkedList<>();
+queue.offer("Харьков");
+queue.offer("Киев");
+queue.offer("Москва");
+queue.offer("Питер");
+
+System.out.println(queue.peek());
+
+String town;
+while ((town = queue.poll()) != null) {
+    System.out.println(town);
+}
+```
+
+
+
+### 6.2.4 Интерфейс Deque
+
+Интерфейс *`Deque`* появился в Java 6. Он расширяет *`Queue`* и описывает поведение двунаправленной очереди. Двунаправленная очередь может функционировать как стандартная очередь ***FIFO*** либо как стек ***LIFO***.
+
+- **void addFirst(Е obj)**  - добавляет *obj* в голову двунаправленной очереди. Возбуждает исключение *`IllegalStateException`*, если в очереди ограниченной <u>емкости нет места</u>.
+- **void addLast(Е obj)** - добавляет *obj* в хвост двунаправленной очереди. Возбуждает исключение *`IllegalStateException`*, если в очереди ограниченной <u>емкости нет места</u>.
+- **Е getFirst()** - возвращает первый элемент двунаправленной очереди. Объект из очереди <u>не удаляется</u>. В случае пустой двунаправленной очереди возбуждает  исключение *`NoSuchElementException`*.
+- **Е getLast()** - возвращает последний элемент двунаправленной очереди. Объект из  очереди <u>не удаляется</u>. В случае пустой двунаправленной очереди возбуждает исключения *`NoSuchElementException`*.
+- **boolean offerFirst(Е obj)** - пытается добавить *obj* в голову двунаправленной очереди. Возвращает *`true`*, если *obj* добавлен, и *`false`* в противном случае. Таким образом, этот метод возвращает *`false`* при попытке добавить *obj* в полную двунаправленную очередь ограниченной емкости.
+- **boolean offerLast(E obj)** - пытается добавить *obj* в хвост двунаправленной очереди. Возвращает *`true`*, если *obj* добавлен, и *`false`* в против ном случае.
+- **Е рор()** - возвращает элемент, находящийся в голове двунаправленной очереди, одновременно <u>удаляя его из очереди</u>. Возбуждает исключение *`NoSuchElementException`*, если очередь пуста.
+- **void push(Е obj)** - добавляет элемент в голову двунаправленной очереди. Если в очереди фиксированного объема <u>нет места</u>, возбуждает исключение *`IllegalStateException`*.
+- **Е peekFirst()** - возвращает элемент, находящийся в голове двунаправленной очереди. Возвращает *`null`*, если очередь пуста. Объект из очереди <u>не удаляется</u>.
+- ***Е peekLast()*** - возвращает элемент, находящийся в хвосте двунаправленной очереди. Возвращает *`null`*, если очередь пуста. Объект из очереди <u>не удаляется</u>.
+- **Е pollFirst()** - возвращает элемент, находящийся в голове двунаправленной очереди, одновременно <u>удаляя</u> его из очереди. Возвращает *`null`*, если очередь пуста.
+- **Е pollLast()** - возвращает элемент, находящийся в хвосте двунаправленной очереди, одновременно <u>удаляя</u> его из очереди. Возвращает *`null`*, если очередь пуста.
+- **Е removeLast()** - возвращает элемент, находящийся в конце двунаправленной очереди, <u>удаляя</u> его в процессе. Возбуждает исключение *`NoSuchElementException`*, если очередь пуста.
+- **Е removeFirst()** - возвращает элемент, находящийся в голове двунаправленной очереди, одновременно <u>удаляя</u> его из очереди. Возбуждает исключение *`NoSuchElementException`*, если очередь пуста.
+- **boolean removeLastOccurrence(Object obj)** - удаляет последнее вхождение *obj* из двунаправленной очереди. Возвращает *`true`* в случае успеха и *`false`* <u>если очередь не содержала *ob</u>j*.
+- **boolean removeFirstOccurrence(Object obj)** - удаляет первое вхождение *obj* из двунаправленной очереди. Возвращает *`true`* в случае успеха и *`false`*, <u>если очередь не содержала *obj*.</u>
 
 
 
